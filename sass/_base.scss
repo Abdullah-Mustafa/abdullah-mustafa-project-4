@@ -1,0 +1,35 @@
+// COLORS
+$color-brick-red: #962715;
+$color-matte-black: #1e1e20;
+$color-medium-grey: #bbc3c6;
+$color-white: #fff;
+
+// GRID
+$grid-width: 114rem;
+$gutter-vertical: 8rem;
+$gutter-vertical-small: 6rem;
+$gutter-horizontal: 6rem;
+// font-family: 'Raleway', sans-serif;
+// font-family: 'Open Sans', sans-serif;
+*,
+*::after,
+*::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+}
+
+html {
+    font-size: 62.5%; //1 rem = 10px; 10px/16px = 62.5%
+    margin: 0;
+    padding: 0;
+}
+body {
+    font-family: 'Open Sans', sans-serif;
+    box-sizing: border-box;
+}
+
+::selection {
+    background-color: $color-brick-red;
+    color: $color-white;
+}
