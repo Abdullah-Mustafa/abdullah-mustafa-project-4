@@ -1,11 +1,9 @@
   // Create app namespace to hold all methods
   const app = {};
-
-
  
 	app.getNews = function (options, countryChosen) {
 		$.ajax({
-		     url: `https://newsapi.org/v2/top-headlines?country=${countryChosen}&category=${options}&apiKey=42ca1d3a90124a35a4b9169c2b910b10`,
+			url: `https://newsapi.org/v2/top-headlines?country=${countryChosen}&category=${options}&pageSize=4&apiKey=36036aa88c3a4c4c81c706cc7d0135e7`,
 			 method: 'GET',
 			 dataType: 'json',
 			 data: {
@@ -54,18 +52,40 @@ app.ticker = function(result){
 	})
 }
 
+$('header').on('click', function(event) {
+	event.preventDefault();
+
+	$('html, body').stop().animate({
+		scrollTop: $('.section-options').offset().top -400
+
+	}, 2000);
+	return false;
+})
 
 
 app.changeoptions = function(){	
-    $(':input').on('click', function(){
+    $('input').on('click', function(){
 		const userCategory = $('#category option:selected').val();
 		const userCountry = $('#country option:selected').val();
 		$('#results').empty();
 		app.getNews(userCategory, userCountry );
 		console.log("test")
 		
-    })
+	})
+	$('input').on('click', function (event) {
+		event.preventDefault();
+
+		$('html, body').stop().animate({
+			scrollTop: $('#results').offset().top
+
+		}, 1000);
+		return false;
+	})
 }
+
+$('.reset').on('click', function () {
+	location.reload();
+});
   // Start app
   app.init = function() {
     app.changeoptions();
