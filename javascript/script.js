@@ -2,76 +2,74 @@
   const app = {};
 
 
-    //app.apiKey = '42ca1d3a90124a35a4b9169c2b910b10';
-    //app.apiUrl =`https://newsapi.org/v2/top-headlines?country=ca&category=${options}&apiKey=42ca1d3a90124a35a4b9169c2b910b10`;
-	//app.apiUrl = 'https://newsapi.org/v2/top-headlines';
-	
-  // Collect user input
-//  app.collectInfo = function() {
-// 	artApp.changeAnimal = function(){
-// 		$('select').on('change', function(){
-// 			const userChoice = $('option:selected').val();
-// 			console.log(userChoice);
-// 			$('#artwork').empty();
-// 			artApp.getArt(userChoice);
-// 		})
-//     }
-//}
-
-
  
-	app.getNews = function (options) {
+	app.getNews = function (options, countryChosen) {
 		$.ajax({
-		     url: `https://newsapi.org/v2/top-headlines?country=ca&category=${options}&apiKey=42ca1d3a90124a35a4b9169c2b910b10`,
+		     url: `https://newsapi.org/v2/top-headlines?country=${countryChosen}&category=${options}&apiKey=42ca1d3a90124a35a4b9169c2b910b10`,
 			 method: 'GET',
 			 dataType: 'json',
 			 data: {
 				key: app.apiKey,
 				format: 'json',
-				category: options
+				category: options, 
+				country : countryChosen
 			 }
 		})
 		.then(function(result){
-			// app.displayNews(result);
-			// console.log('author', result.articles[0].author);
-			// console.log('title', result.articles[0].title);
-			// console.log('source', result.articles[0].source.name);
-		
-		     app.displayNews(result);
-			console.log("Object",result)
+			 app.ticker(result);
+			 app.displayNews(result); 
+			console.log("Object",result);
+			
 		})
 	}
 
 // Display data on the page
 app.displayNews= function(result){
-
     result.articles.forEach(function(piece){ 
 		const htmlToPost = `<div class="last-section">
 		<h2 class="title">${piece.author}</h2>
 		<p class="paragraph">${piece.title}</p>
 		<p>source : ${piece.source.name}</p>
-		<img src=${piece.urlToImage}>
+		<img class="result-image" src=${piece.urlToImage}>
 		</div>`;
-
 	  $('#results').append(htmlToPost);
-    });
+	 
+	});
+};
+
+
+app.ticker = function(result){
+	result.articles.forEach(function(item){
+		const ticker = ` <div class="ticker">
+		<div class="ticker__item">${item.description}</div>
+		<div class="ticker__item">${item.source.name}</div>
+		<div class="ticker__item">${item.title}</div>
+		<div class="ticker__item">${item.description}</div>
+		<div class="ticker__item">${item.description}</div>
+		<div class="ticker__item">${item.source.name}</div>
+		<div class="ticker__item">${item.title}</div>
+		<div class="ticker__item">${item.description}</div>
+		 </div>`;
+		$('.ticker-wrap').append(ticker);
+	})
 }
 
 
 
-app.changeoptions = function(){
-    $('select').on('change', function(){
-        const userChoice = $('option:selected').val();
-        console.log(userChoice);
-        $('#results').empty();
-        app.getNews(userChoice);
+app.changeoptions = function(){	
+    $(':input').on('click', function(){
+		const userCategory = $('#category option:selected').val();
+		const userCountry = $('#country option:selected').val();
+		$('#results').empty();
+		app.getNews(userCategory, userCountry );
+		console.log("test")
+		
     })
 }
   // Start app
   app.init = function() {
     app.changeoptions();
 	app.getNews();
-	//app.displayNews();
   }
 
 
@@ -172,6 +170,7 @@ $(function(){
 		resetCallback: function() {}
 	});
 });
+
 
 
 

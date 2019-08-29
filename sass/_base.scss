@@ -11,6 +11,7 @@ $gutter-vertical-small: 6rem;
 $gutter-horizontal: 6rem;
 // font-family: 'Raleway', sans-serif;
 // font-family: 'Open Sans', sans-serif;
+
 *,
 *::after,
 *::before {
@@ -32,4 +33,105 @@ body {
 ::selection {
     background-color: $color-brick-red;
     color: $color-white;
+}
+
+
+
+//////////////////////////////////// selection 
+
+// .select-style {
+//     border: 1px solid #ccc;
+//     width: 20rem;
+//     border-radius: 3px;
+//     overflow: hidden;
+//     background: #fafafa;
+//     margin: 0 auto;
+  
+// }
+
+// .select-style select {
+//     padding: 2rem ;
+//     width: 78%;
+//     border: none;
+//     box-shadow: none;
+//     background: transparent;
+//     background-image: none;
+//     -webkit-appearance: none;
+// }
+
+// .select-style select:focus {
+//     outline: none;
+// }
+
+
+
+$duration: 40s;
+
+@-webkit-keyframes ticker {
+  0% {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+    visibility: visible;
+  }
+
+  100% {
+    -webkit-transform: translate3d(-100%, 0, 0);
+    transform: translate3d(-100%, 0, 0);
+  }
+}
+
+@keyframes ticker {
+  0% {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+    visibility: visible;
+  }
+
+  100% {
+    -webkit-transform: translate3d(-100%, 0, 0);
+    transform: translate3d(-100%, 0, 0);
+  }
+}
+
+.ticker-wrap {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  overflow: hidden;
+  height: 4rem;
+  background-color: $color-matte-black;
+  padding-left: 100%;
+  box-sizing: content-box;
+
+
+  .ticker {
+
+    display: inline-block;
+    height: 4rem;
+    line-height: 4rem;  
+    white-space: nowrap;
+    padding-right: 100%;
+    box-sizing: content-box;
+
+    -webkit-animation-iteration-count: infinite; 
+            animation-iteration-count: infinite;
+    -webkit-animation-timing-function: linear;
+            animation-timing-function: linear;
+   -webkit-animation-name: ticker;
+           animation-name: ticker;
+    -webkit-animation-duration: $duration;
+            animation-duration: $duration;
+
+    &__item {
+
+      display: inline-block;
+
+      padding: 0 2rem;
+      font-size: 2rem;
+      color: white;   
+
+    }
+
+  }
+
 }
