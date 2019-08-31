@@ -1,8 +1,11 @@
+@import "mixins";
+
 // COLORS
 $color-brick-red: #962715;
 $color-matte-black: #1e1e20;
 $color-medium-grey: #bbc3c6;
 $color-white: #fff;
+$color-black: #000;
 
 // GRID
 $grid-width: 114rem;
@@ -24,6 +27,12 @@ html {
     font-size: 62.5%; //1 rem = 10px; 10px/16px = 62.5%
     margin: 0;
     padding: 0;
+    @include respond(tab-port) { // width < 900?
+      font-size: 50%; //1 rem = 8px, 8/16 = 50%
+  }
+  @include respond(small-phone) {
+   font-size: 40%;
+}
 }
 body {
     font-family: 'Open Sans', sans-serif;

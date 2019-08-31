@@ -1,3 +1,20 @@
+/*
+0 - 750px:      Phone
+600 - 900px:    Tablet portrait
+900 - 1200px:   Tablet landscape
+[1200 - 1800] is where our normal styles apply
+1800px + :      Big desktop
+
+$breakpoint arguement choices:
+- phone
+- tab-port
+- tab-land
+- big-desktop
+
+ORDER: Base + typography > general layout + grid > page layout > components
+
+1em = 16px
+*/
 *,
 *::after,
 *::before {
@@ -9,6 +26,12 @@ html {
   font-size: 62.5%;
   margin: 0;
   padding: 0; }
+  @media only screen and (max-width: 56.25em) {
+    html {
+      font-size: 50%; } }
+  @media only screen and (max-width: 40em) {
+    html {
+      font-size: 40%; } }
 
 body {
   font-family: 'Open Sans', sans-serif;
@@ -66,6 +89,23 @@ body {
       font-size: 2rem;
       color: white; }
 
+/*
+0 - 750px:      Phone
+600 - 900px:    Tablet portrait
+900 - 1200px:   Tablet landscape
+[1200 - 1800] is where our normal styles apply
+1800px + :      Big desktop
+
+$breakpoint arguement choices:
+- phone
+- tab-port
+- tab-land
+- big-desktop
+
+ORDER: Base + typography > general layout + grid > page layout > components
+
+1em = 16px
+*/
 .bg-video {
   position: absolute;
   top: 0;
@@ -81,8 +121,10 @@ body {
     object-fit: cover; }
 
 .header {
-  height: 100vh;
-  margin-bottom: 10rem; }
+  height: 100vh; }
+  @media only screen and (max-width: 56.25em) {
+    .header {
+      height: 100vh; } }
   .header__heading {
     font-size: 5rem;
     text-transform: uppercase;
@@ -92,6 +134,12 @@ body {
     font-family: 'Raleway', sans-serif;
     font-weight: bold;
     letter-spacing: 1px; }
+    @media only screen and (max-width: 75em) {
+      .header__heading {
+        font-size: 3.5rem; } }
+    @media only screen and (max-width: 40em) {
+      .header__heading {
+        font-size: 3rem; } }
   .header__box {
     position: absolute;
     top: 60%;
@@ -185,9 +233,18 @@ input[type="submit"] {
   background-color: #1e1e20;
   width: 100%;
   color: white;
-  padding: 3rem;
-  font-size: 7rem;
-  text-transform: uppercase; }
+  padding: 3.5rem 0;
+  font-size: 5rem;
+  text-transform: uppercase;
+  cursor: pointer; }
+  input[type="submit"]:focus, input[type="submit"]:visited {
+    outline: none; }
+  @media only screen and (max-width: 56.25em) {
+    input[type="submit"] {
+      font-size: 5rem; } }
+  @media only screen and (max-width: 40em) {
+    input[type="submit"] {
+      font-size: 4rem; } }
 
 fieldset {
   border: none; }
@@ -246,9 +303,20 @@ select::-ms-expand {
 .selection-div {
   display: flex;
   justify-content: space-around; }
+  @media only screen and (max-width: 46em) {
+    .selection-div {
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      margin: -9rem 0; } }
+
+@media only screen and (max-width: 46em) {
+  .buttons {
+    margin: 10rem 0; } }
 
 .section-options {
-  margin: 5rem; }
+  margin: 10rem 0;
+  padding: 5rem 0; }
 
 .icon {
   font-size: 4rem;
@@ -276,7 +344,7 @@ select::-ms-expand {
 #scroll {
   position: fixed;
   right: 10px;
-  bottom: 5%;
+  bottom: 17%;
   cursor: pointer;
   width: 50px;
   height: 50px;
@@ -287,6 +355,12 @@ select::-ms-expand {
   -webkit-border-radius: 60px;
   -moz-border-radius: 60px;
   border-radius: 60px; }
+  @media only screen and (max-width: 56.25em) {
+    #scroll {
+      bottom: 13%; } }
+  @media only screen and (max-width: 46em) {
+    #scroll {
+      bottom: 9%; } }
 
 #scroll span {
   position: absolute;
@@ -304,3 +378,21 @@ select::-ms-expand {
   opacity: 1;
   filter: "alpha(opacity=100)";
   -ms-filter: "alpha(opacity=100)"; }
+
+/*
+0 - 750px:      Phone
+600 - 900px:    Tablet portrait
+900 - 1200px:   Tablet landscape
+[1200 - 1800] is where our normal styles apply
+1800px + :      Big desktop
+
+$breakpoint arguement choices:
+- phone
+- tab-port
+- tab-land
+- big-desktop
+
+ORDER: Base + typography > general layout + grid > page layout > components
+
+1em = 16px
+*/

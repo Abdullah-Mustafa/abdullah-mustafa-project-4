@@ -51,11 +51,11 @@ app.ticker = function(result){
 	})
 }
 
-$('header').on('click', function(event) {
+$('.btn').on('click', function(event) {
 	event.preventDefault();
 
 	$('html, body').stop().animate({
-		scrollTop: $('.section-options').offset().top -400
+		scrollTop: $('.results-button').offset().top -400
 
 	}, 1000);
 	return false;

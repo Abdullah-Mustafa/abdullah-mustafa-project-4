@@ -1,3 +1,4 @@
+@import "mixins";
 .bg-video {
     position: absolute;
     top: 0;
@@ -17,7 +18,9 @@
 
 .header { 
     height: 100vh;
-    margin-bottom: 10rem;
+    @include respond(tab-port) { // width < 900?
+        height: 100vh;
+    }
        &__heading {
            font-size: 5rem;
            text-transform: uppercase;
@@ -27,6 +30,12 @@
            font-family: 'Raleway', sans-serif;
            font-weight: bold;
            letter-spacing: 1px;
+           @include respond(tab-land) { // width < 1200?
+            font-size: 3.5rem; //1 rem = 9px, 9/16 = 50%
+        }
+        @include respond(small-phone) { // width < 900?
+            font-size: 3rem;
+        }
        }
            &__box {
                position: absolute;
@@ -228,6 +237,8 @@
      justify-content: space-around;
      align-items: flex-end;
      flex-wrap: nowrap;
+   
+   
 }
 
 // .button {
@@ -251,14 +262,25 @@ input[type="submit"] {
     background-color: $color-matte-black;
     width: 100%;
     color: white;
-    padding: 3rem;
-    font-size: 7rem;
+    padding: 3.5rem 0;
+    font-size: 5rem;
     text-transform: uppercase;
+    cursor: pointer;
+    &:focus, 
+    &:visited {
+        outline: none
+    }
+
+
+     @include respond(tab-port) { // width < 900?
+        font-size: 5rem;
+    }
+    @include respond(small-phone) { // width < 900?
+        font-size: 4rem;
+    }
 }
 
-button {
 
-}
 
 fieldset {
     border: none;
@@ -327,10 +349,23 @@ select::-ms-expand {
 .selection-div {
     display: flex;
     justify-content: space-around;
+    @include respond(phone) { 
+        flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          margin: -9rem 0;
+       }
  
 }
+.buttons {
+    @include respond(phone) {
+       margin: 10rem 0;
+       }
+}
 .section-options {
-   margin: 5rem;
+   margin: 10rem 0;
+   padding: 5rem 0;
+  
 }
 .icon {
     font-size: 4rem;
@@ -365,7 +400,7 @@ select::-ms-expand {
 #scroll {
     position:fixed;
     right:10px;
-    bottom: 5%;
+    bottom: 17%;
     cursor:pointer;
     width:50px;
     height:50px;
@@ -375,7 +410,13 @@ select::-ms-expand {
     display:none;
     -webkit-border-radius:60px;
     -moz-border-radius:60px;
-    border-radius:60px
+    border-radius:60px;
+    @include respond(tab-port) { // width < 900?
+        bottom: 13%;
+    }
+    @include respond(phone) { // width < 900?
+        bottom: 9%;
+    } 
 }
 #scroll span {
     position:absolute;
