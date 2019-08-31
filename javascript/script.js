@@ -25,10 +25,9 @@
 app.displayNews= function(result){
     result.articles.forEach(function(piece){ 
 		const htmlToPost = `<div class="last-section">
-		<h2 class="title">${piece.author}</h2>
 		<p class="paragraph">${piece.title}</p>
 		<p>source : ${piece.source.name}</p>
-		<img class="result-image" src=${piece.urlToImage}>
+		<img class="result-image" src=${piece.urlToImage}
 		</div>`;
 	  $('#results').append(htmlToPost);
 	 
@@ -58,7 +57,7 @@ $('header').on('click', function(event) {
 	$('html, body').stop().animate({
 		scrollTop: $('.section-options').offset().top -400
 
-	}, 2000);
+	}, 1000);
 	return false;
 })
 
@@ -78,7 +77,7 @@ app.changeoptions = function(){
 		$('html, body').stop().animate({
 			scrollTop: $('#results').offset().top
 
-		}, 1000);
+		}, 1800);
 		return false;
 	})
 }
@@ -102,18 +101,20 @@ $(document).ready(function(){
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
+///////////////// scroll top 
+$(document).ready(function(){ 
+    $(window).scroll(function(){ 
+        if ($(this).scrollTop() > 100) { 
+            $('#scroll').fadeIn(); 
+        } else { 
+            $('#scroll').fadeOut(); 
+        } 
+    }); 
+    $('#scroll').click(function(){ 
+        $("html, body").animate({ scrollTop: 0 }, 600); 
+        return false; 
+    }); 
+});
 
 
 
