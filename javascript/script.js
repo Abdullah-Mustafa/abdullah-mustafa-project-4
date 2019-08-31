@@ -37,7 +37,7 @@ app.displayNews= function(result){
 
 app.ticker = function(result){
 	result.articles.forEach(function(item){
-		const ticker = ` <div class="ticker">
+		const ticker = `<div class="ticker">
 		<div class="ticker__item">${item.description}</div>
 		<div class="ticker__item">${item.source.name}</div>
 		<div class="ticker__item">${item.title}</div>
@@ -57,7 +57,7 @@ $('.btn').on('click', function(event) {
 	$('html, body').stop().animate({
 		scrollTop: $('.results-button').offset().top -400
 
-	}, 1000);
+	}, 1500);
 	return false;
 })
 
@@ -77,7 +77,7 @@ app.changeoptions = function(){
 		$('html, body').stop().animate({
 			scrollTop: $('#results').offset().top
 
-		}, 1800);
+		}, 1500);
 		return false;
 	})
 }
@@ -96,9 +96,6 @@ $(document).ready(function(){
 	app.init();
 
 });
-
-
-
 
 
 ///////////////// scroll top 
