@@ -209,43 +209,6 @@
 }
 
 
-// .test {
-//     &,
-//     &:link,
-//     &:visited {
-//         text-transform: uppercase;
-//         text-decoration: none;
-//         padding: 1.5rem 4rem;
-//         border-radius: 10rem;
-//         transition: all .2s;
-//         font-size: 3rem;
-
-//         //Change for the <button> element
-//         border: none;
-//         cursor: pointer;
-//         background-color: $color-brick-red;
-// }
-// }
-
-
-
-// .button {
-//         text-transform: uppercase;
-//         text-decoration: none;
-//         padding: 1.5rem 4rem;
-//         border-radius: 3px;
-//         transition: all .2s;
-//         font-size: 3rem;
-//         border: none;
-//         cursor: pointer;
-//         color: $color-white;
-//         background-color: $color-brick-red;
-//         padding: 1.5rem 3rem;
-//         font-size: 2rem;
-//         margin-right: 2rem;
-// }
-
-
 input[type="submit"] {
     background-color: $color-matte-black;
     width: 100%;
@@ -338,21 +301,17 @@ select::-ms-expand {
   
 }
 .icon {
-    font-size: 4rem;
+    font-size: 2rem;
     color: $color-brick-red;
     animation: pulse 2s infinite;
-    padding: 0 5rem;   
+    padding: 1rem 3rem 0; 
+    background-color:  #f4f5f9;
+    @include respond(phone) { 
+       padding-bottom: 1rem;
+       }
+    
 }
 
-
-//////////// reset results 
-.reset {
-    background-color: $color-brick-red;
-    color: $color-white;
-padding: 3rem;
-   
-    text-decoration: none;
-}
 
 
 ////////////////////////// scroll top 
@@ -444,10 +403,10 @@ padding: 3rem;
         backface-visibility: hidden;
         border-radius: 3px;
         overflow: hidden;
-        box-shadow: 0 1.5rem 4rem rgba($color-black, .18);
+        box-shadow: 0 1.5rem 4rem rgba($color-black, .22);
 
         &--front {
-            background-color: $color-medium-grey;
+            background-color: $color-white;
 
         }
 
@@ -455,7 +414,7 @@ padding: 3rem;
             transform: rotateY(180deg);
 
             &-1 {
-                background-image: linear-gradient(to right bottom, $color-white, #d3e0f7);
+                background-image: linear-gradient(to right bottom, $color-brick-red, #EC6A5C);
             }
         }
     }
@@ -501,7 +460,7 @@ padding: 3rem;
 
     // FRONT SIDE STYLING
     &__cta {
-        position: absolute;
+       position: absolute;
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
@@ -513,42 +472,14 @@ padding: 3rem;
         text-align: center;
         color: $color-white;
         margin-bottom: 8rem;
+
+        &--heading {
+            text-transform: uppercase;
+            font-size: 2.8rem;
+            letter-spacing: 1px;
+            font-weight: 700;
+        }
     }
-
-
-
-
-
-    // //@include respond(tab-port) {
-    // @media only screen and (max-width: 56.25em),
-    //         only screen and (hover: none) {
-
-    //     height: auto;
-    //     border-radius: 3px;
-        
-    //     &__side {
-    //         height: auto;
-    //         position: relative;
-    //         box-shadow: none;
-
-    //         &--back {
-    //             transform: rotateY(0);
-    //             clip-path: polygon(0 15%, 100% 0, 100% 100%, 0% 100%);
-    //         }
-    //     }
-    
-    //     &:hover &__side--front {
-    //         transform: rotateY(0);
-    //     }
-
-    
-    //     &__details {
-    //         padding: 3rem 5rem;
-           
-    //     }
-       
-
-    // }
 
 }
 p {
@@ -560,3 +491,28 @@ p {
     height: 230px;
 }
 
+.read-more {
+    background-color: $color-white;
+    color: $color-matte-black;
+    padding: 2rem;
+    font-size: 2rem;
+    text-decoration: none;
+    text-transform: uppercase;
+    height: auto;
+    text-align: center;
+    line-height: 50px;
+    border-radius: 5px;
+    box-shadow: 14px 14px rgba(77, 77, 77, 0.1);
+    transition: transform 0.4s, box-shadow 0.4s;
+ &:hover{
+    box-shadow: 14px 14px rgba(77, 77, 77, 0.5);
+ }
+ &:active {
+    transform: translate3d(7px, 7px, 0px);
+    box-shadow: 7px 7px rgba(77, 77, 77, 0.5);
+ }
+
+}
+
+
+ 

@@ -42,9 +42,10 @@ app.displayNews= function(result){
 			 <div class="card__side card__side--back card__side--back-1">
 			  <div class="card__cta">
 				<div class="card__price-box">
-				   <p>Read more details</p>
+				   <h4 class="card__price-box--heading">Check Full story</h4>
+				   <h4 class="card__price-box--heading">below</h4>
 				</div>
-				<a href="#popup" class="reset">Book now!</a>
+				<a href="#popup" class="read-more">Read more</a>
 			  </div>
 			</div>
 		   </div>
