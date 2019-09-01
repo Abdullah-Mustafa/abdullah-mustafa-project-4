@@ -3,7 +3,7 @@
  
 	app.getNews = function (options, countryChosen) {
 		$.ajax({
-			url: `https://newsapi.org/v2/top-headlines?country=${countryChosen}&category=${options}&pageSize=4&apiKey=36036aa88c3a4c4c81c706cc7d0135e7`,
+			url: `https://newsapi.org/v2/top-headlines?country=${countryChosen}&category=${options}&pageSize=3&apiKey=36036aa88c3a4c4c81c706cc7d0135e7`,
 			 method: 'GET',
 			 dataType: 'json',
 			 data: {
@@ -24,12 +24,32 @@
 // Display data on the page
 app.displayNews= function(result){
     result.articles.forEach(function(piece){ 
-		const htmlToPost = `<div class="last-section">
-		<p class="paragraph">${piece.title}</p>
-		<p>source : ${piece.source.name}</p>
-		<img class="result-image" src=${piece.urlToImage}
-		</div>`;
-	  $('#results').append(htmlToPost);
+	
+		const htmlToPost = `
+		<div class="col-1-of-3">
+		   <div class="card">
+			 <div class="card__side card__side--front">
+			  <div class="card__picture card__picture--1">
+				 <img src=${piece.urlToImage} alt="">
+			  </div>
+			  <h4 class="card__heading">
+				<span class="card__heading-span card__heading-span--1">${piece.source.name}</span>
+			  </h4>
+			  <div class="card__details">
+			  <p>${piece.description}</p>
+			  </div>
+			 </div>
+			 <div class="card__side card__side--back card__side--back-1">
+			  <div class="card__cta">
+				<div class="card__price-box">
+				   <p>Read more details</p>
+				</div>
+				<a href="#popup" class="btn btn--white">Book now!</a>
+			  </div>
+			</div>
+		   </div>
+		</div>`
+	  $('#results').append(htmlToPost).addClass("row");
 	 
 	});
 };
@@ -40,17 +60,15 @@ app.ticker = function(result){
 		const ticker = ` <div class="ticker">
 		<div class="ticker__item">${item.description}</div>
 		<div class="ticker__item">${item.source.name}</div>
+		<div class="ticker__item">${item.content}</div>
+		<div class="ticker__item">${item.description}</div>
 		<div class="ticker__item">${item.title}</div>
-		<div class="ticker__item">${item.description}</div>
-		<div class="ticker__item">${item.description}</div>
 		<div class="ticker__item">${item.source.name}</div>
-		<div class="ticker__item">${item.title}</div>
-		<div class="ticker__item">${item.description}</div>
+	
 		 </div>`;
 		$('.ticker-wrap').append(ticker);
 	})
 }
-
 $('.btn').on('click', function(event) {
 	event.preventDefault();
 

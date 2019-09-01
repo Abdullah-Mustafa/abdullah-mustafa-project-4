@@ -34,3 +34,13 @@ ORDER: Base + typography > general layout + grid > page layout > components
     }
 }
 
+
+
+@mixin clearfix {
+    &::after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+}
+
