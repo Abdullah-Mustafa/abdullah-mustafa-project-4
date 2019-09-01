@@ -30,13 +30,13 @@ app.displayNews= function(result){
 		   <div class="card">
 			 <div class="card__side card__side--front">
 			  <div class="card__picture card__picture--1">
-				 <img src=${piece.urlToImage} alt="">
+				 <img src=${piece.urlToImage} alt="Photo is not avialable on your device">
 			  </div>
 			  <h4 class="card__heading">
 				<span class="card__heading-span card__heading-span--1">${piece.source.name}</span>
 			  </h4>
 			  <div class="card__details">
-			  <p>${piece.description}</p>
+			  <p class="card__details--paragraph">${piece.description}</p>
 			  </div>
 			 </div>
 			 <div class="card__side card__side--back card__side--back-1">
@@ -44,7 +44,7 @@ app.displayNews= function(result){
 				<div class="card__price-box">
 				   <p>Read more details</p>
 				</div>
-				<a href="#popup" class="btn btn--white">Book now!</a>
+				<a href="#popup" class="reset">Book now!</a>
 			  </div>
 			</div>
 		   </div>
@@ -113,6 +113,7 @@ $('.reset').on('click', function () {
 $(document).ready(function(){
 	app.init();
 
+
 });
 
 
@@ -176,7 +177,7 @@ $(document).ready(function(){
 
 $(function(){
 	$(".typed").typed({
-        strings: ["the world","Politics", "Business", "Art", "Technology", "sport","Economy"],
+        strings: ["the world","Politics", "Business", "Art", "Technology", "Sports","Economy", "Science", "entertainment","the world" ],
 		// Optionally use an HTML element to grab strings from (must wrap each string in a <p>)
 		stringsElement: null,
 		// typing speed

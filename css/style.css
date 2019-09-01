@@ -224,29 +224,29 @@ ORDER: Base + typography > general layout + grid > page layout > components
 
 .row {
   max-width: 114rem;
-  margin: 0 auto; }
+  margin: 7rem auto; }
   .row:not(:last-child) {
     margin-bottom: 8rem; }
+  @media only screen and (max-width: 56.25em) {
+    .row {
+      max-width: 50rem; } }
   .row [class^="col-"] {
     float: left; }
     .row [class^="col-"]:not(:last-child) {
       margin-right: 6rem; }
+      @media only screen and (max-width: 56.25em) {
+        .row [class^="col-"]:not(:last-child) {
+          margin-right: 0;
+          margin-bottom: 2rem; } }
   .row::after {
     content: "";
     display: table;
     clear: both; }
-  .row .col-1-of-2 {
-    width: calc((100% - 6rem) / 2); }
   .row .col-1-of-3 {
     width: calc((100% - 2 * 6rem) / 3); }
-  .row .col-2-of-3 {
-    width: calc(2 * ((100% - 2 * 6rem) / 3) + 6rem); }
-  .row .col-1-of-4 {
-    width: calc((100% - 3 * 6rem) / 4); }
-  .row .col-2-of-4 {
-    width: calc(2 * ((100% - 3 * 6rem) / 4) + 6rem); }
-  .row .col-3-of-4 {
-    width: calc(3 * ((100% - 3 * 6rem) / 4) + 2 * 6rem); }
+    @media only screen and (max-width: 56.25em) {
+      .row .col-1-of-3 {
+        width: 100%; } }
 
 input[type="submit"] {
   background-color: #1e1e20;
@@ -331,19 +331,8 @@ select::-ms-expand {
 
 .reset {
   background-color: #962715;
-  height: 5rem;
-  width: 5rem;
-  border-radius: 50%;
   color: #fff;
-  text-align: center;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 2.5rem;
-  position: fixed;
-  z-index: 10000;
-  bottom: 5%;
-  left: 0;
+  padding: 3rem;
   text-decoration: none; }
 
 #scroll {
@@ -359,7 +348,8 @@ select::-ms-expand {
   display: none;
   -webkit-border-radius: 60px;
   -moz-border-radius: 60px;
-  border-radius: 60px; }
+  border-radius: 60px;
+  z-index: 1000; }
   @media only screen and (max-width: 56.25em) {
     #scroll {
       bottom: 13%; } }
@@ -422,33 +412,33 @@ select::-ms-expand {
     backface-visibility: hidden;
     border-radius: 3px;
     overflow: hidden;
-    box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.15); }
+    box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.18); }
     .card__side--front {
-      background-color: orange; }
+      background-color: #bbc3c6; }
     .card__side--back {
       transform: rotateY(180deg); }
       .card__side--back-1 {
-        background-image: linear-gradient(to right bottom, red, yellowGreen); }
+        background-image: linear-gradient(to right bottom, #fff, #d3e0f7); }
   .card:hover .card__side--front {
     transform: rotateY(-180deg); }
   .card:hover .card__side--back {
     transform: rotateY(0); }
   .card__heading {
-    font-size: 2.8rem;
+    font-size: 2.2rem;
     font-weight: 300;
     text-transform: uppercase;
     text-align: right;
     color: #fff;
     position: absolute;
     top: 0;
-    right: 2rem;
+    right: 5rem;
     width: 75%; }
   .card__heading-span {
     padding: 1rem 1.5rem;
     -webkit-box-decoration-break: clone;
     box-decoration-break: clone; }
     .card__heading-span--1 {
-      background-image: linear-gradient(to right bottom, rgba(154, 205, 50, 0.85), rgba(154, 205, 50, 0.85)); }
+      background-image: linear-gradient(to right bottom, rgba(150, 39, 21, 0.85), rgba(236, 106, 92, 0.85)); }
   .card__cta {
     position: absolute;
     top: 50%;
@@ -460,27 +450,14 @@ select::-ms-expand {
     text-align: center;
     color: #fff;
     margin-bottom: 8rem; }
-  @media only screen and (max-width: 56.25em), only screen and (hover: none) {
-    .card {
-      height: auto;
-      border-radius: 3px;
-      background-color: #fff;
-      box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.15); }
-      .card__side {
-        height: auto;
-        position: relative;
-        box-shadow: none; }
-        .card__side--back {
-          transform: rotateY(0);
-          clip-path: polygon(0 15%, 100% 0, 100% 100%, 0% 100%); }
-      .card:hover .card__side--front {
-        transform: rotateY(0); }
-      .card__details {
-        padding: 1rem 3rem; } }
+
+p {
+  padding: 4rem;
+  font-size: 1.6rem; }
 
 .card__picture img {
   width: 100%;
-  height: auto; }
+  height: 230px; }
 
 /*
 0 - 750px:      Phone

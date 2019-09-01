@@ -170,45 +170,40 @@
 //////////////////////////////////// grid 
 .row {
     max-width: $grid-width;
-    margin: 0 auto;
+    margin: 7rem auto;
 
 
     &:not(:last-child) {
         margin-bottom: $gutter-vertical;
+
+
+    }
+
+    @include respond(tab-port) { // width < 900?
+        max-width: 50rem;
+       
     }
 
     [class^="col-"] {
         float: left;
-
+      
         &:not(:last-child) {
             margin-right: $gutter-horizontal;
+            @include respond(tab-port) {
+                margin-right: 0;
+                margin-bottom: 2rem;
+            }
         }
+       
     }
     @include clearfix;
 
-    .col-1-of-2 {
-        width: calc((100% - #{$gutter-horizontal}) / 2);
-        
-    }
-
     .col-1-of-3 {
         width: calc((100% - 2 * #{$gutter-horizontal}) / 3);
-    }
-
-    .col-2-of-3 {
-        width: calc(2 * ((100% - 2 * #{$gutter-horizontal}) / 3) + #{$gutter-horizontal});
-    }
-
-    .col-1-of-4 {
-        width: calc((100% - 3 * #{$gutter-horizontal}) / 4);
-    }
-
-    .col-2-of-4 {
-        width: calc(2 * ((100% - 3 * #{$gutter-horizontal}) / 4) + #{$gutter-horizontal});
-    }
-
-    .col-3-of-4 {
-        width: calc(3 * ((100% - 3 * #{$gutter-horizontal}) / 4) + 2 * #{$gutter-horizontal});
+        @include respond(tab-port) {
+            width: 100%;
+        }
+     
     }
 
 }
@@ -353,19 +348,9 @@ select::-ms-expand {
 //////////// reset results 
 .reset {
     background-color: $color-brick-red;
-    height: 5rem;
-    width: 5rem;
-    border-radius: 50%;
     color: $color-white;
-    text-align: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 2.5rem;
-    position: fixed;
-    z-index: 10000;
-    bottom: 5%;
-    left: 0;
+padding: 3rem;
+   
     text-decoration: none;
 }
 
@@ -386,6 +371,7 @@ select::-ms-expand {
     -webkit-border-radius:60px;
     -moz-border-radius:60px;
     border-radius:60px;
+    z-index: 1000;
     @include respond(tab-port) { // width < 900?
         bottom: 13%;
     }
@@ -445,6 +431,7 @@ select::-ms-expand {
     -moz-perspective: 150rem;
     position: relative;
     height: 52rem;
+
     
     &__side {
         height: 52rem;
@@ -457,10 +444,10 @@ select::-ms-expand {
         backface-visibility: hidden;
         border-radius: 3px;
         overflow: hidden;
-        box-shadow: 0 1.5rem 4rem rgba($color-black, .15);
+        box-shadow: 0 1.5rem 4rem rgba($color-black, .18);
 
         &--front {
-            background-color: orange;
+            background-color: $color-medium-grey;
 
         }
 
@@ -468,7 +455,7 @@ select::-ms-expand {
             transform: rotateY(180deg);
 
             &-1 {
-                background-image: linear-gradient(to right bottom, red, yellowGreen);
+                background-image: linear-gradient(to right bottom, $color-white, #d3e0f7);
             }
         }
     }
@@ -486,14 +473,14 @@ select::-ms-expand {
   
 
     &__heading {
-        font-size: 2.8rem;
+        font-size: 2.2rem;
         font-weight: 300;
         text-transform: uppercase;
         text-align: right;
         color: $color-white;
         position: absolute;
         top: 0;
-        right: 2rem;
+        right: 5rem;
         width: 75%;
     
     }
@@ -505,8 +492,8 @@ select::-ms-expand {
 
         &--1 {
             background-image: linear-gradient(to right bottom, 
-            rgba(yellowGreen, .85), 
-            rgba(yellowGreen, .85));
+            rgba($color-brick-red, .85), 
+            rgba(#EC6A5C, .85));
         }
     }
 
@@ -532,49 +519,44 @@ select::-ms-expand {
 
 
 
-    //@include respond(tab-port) {
-    @media only screen and (max-width: 56.25em),
-            only screen and (hover: none) {
+    // //@include respond(tab-port) {
+    // @media only screen and (max-width: 56.25em),
+    //         only screen and (hover: none) {
 
-        height: auto;
-        border-radius: 3px;
-        background-color: $color-white;
-        box-shadow: 0 1.5rem 4rem rgba($color-black, .15);
+    //     height: auto;
+    //     border-radius: 3px;
         
-        &__side {
-            height: auto;
-            position: relative;
-            box-shadow: none;
+    //     &__side {
+    //         height: auto;
+    //         position: relative;
+    //         box-shadow: none;
 
-            &--back {
-                transform: rotateY(0);
-                clip-path: polygon(0 15%, 100% 0, 100% 100%, 0% 100%);
-            }
-        }
+    //         &--back {
+    //             transform: rotateY(0);
+    //             clip-path: polygon(0 15%, 100% 0, 100% 100%, 0% 100%);
+    //         }
+    //     }
     
-        &:hover &__side--front {
-            transform: rotateY(0);
-        }
+    //     &:hover &__side--front {
+    //         transform: rotateY(0);
+    //     }
 
     
-        &__details {
-            padding: 1rem 3rem;
-        }
+    //     &__details {
+    //         padding: 3rem 5rem;
+           
+    //     }
+       
 
-    }
+    // }
 
 }
-
+p {
+    padding: 4rem;
+    font-size: 1.6rem;
+}
 .card__picture  img {
     width: 100%;
-    height: auto;
+    height: 230px;
 }
 
-
-// .row {
-//     float: left;
-// }
-// .col-1-of-3 {
-//     width: 33%;
-//     padding: 5px;
-// }
