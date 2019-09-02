@@ -14,18 +14,14 @@
 			 }
 		})
 		.then(function(result){
-			 app.ticker(result);
-			 app.displayNews(result); 
-
-			console.log("Object",result);
-			
+			 app.displayTicker(result);
+			 app.displayNews(result); 		
 		})
 	}
 
 // Display data on the page
 app.displayNews= function(result){
     result.articles.forEach(function(piece){ 
-	
 		const htmlToPost = `
 		<div class="col-1-of-3">
 		   <div class="card">
@@ -41,37 +37,35 @@ app.displayNews= function(result){
 			  </div>
 			 </div>
 			 <div class="card__side card__side--back card__side--back-1">
-			  <div class="card__cta">
-				<div class="card__price-box">
-				   <h4 class="card__price-box--heading">Check Full story</h4>
-				   <h4 class="card__price-box--heading">below</h4>
+			  <div class="card__guide">
+				<div class="card__box">
+				   <h4 class="card__box--heading">Check Full story</h4>
+				   <h4 class="card__box--heading">below</h4>
 				</div>
 				<a href="#popup" class="read-more">Read more</a>
 			  </div>
 			</div>
 		   </div>
 		</div>`;
-		const popup =`<div class="popup" id="popup">
+		const popup =`
 		<div class="popup__content">
 			<div class="popup__left">
 				<img src=${piece.urlToImage} alt="Tour photo" class="popup__img">
 			</div>
 			<div class="popup__right">
-				<a href="#section-tours" class="popup__close">&times;</a>
+				<a href="#results" class="popup__close">&times;</a>
 				<h3 class="heading-tertiary u-margin-bottom-small">${piece.title}</h3>
 				<p class="popup__text">${piece.content}</p>
 			</div>
 		</div>
-		</div>`;
+		`;
 	  $('#results').append(htmlToPost).addClass("row");
-	  $('#pops').append(popup);
+	  $('#pops').append(popup).addClass('popup').attr('id', 'popup');
 	});
 };
 
 
-
-
-app.ticker = function(result){
+app.displayTicker = function(result){
 	result.articles.forEach(function(item){
 		const ticker = ` <div class="ticker">
 		<div class="ticker__item">${item.description}</div>
@@ -101,9 +95,8 @@ app.changeoptions = function(){
 		const userCategory = $('#category option:selected').val();
 		const userCountry = $('#country option:selected').val();
 		$('#results').empty();
+		$('.ticker-wrap').empty();
 		app.getNews(userCategory, userCountry );
-		console.log("test")
-		
 	})
 	$('input').on('click', function (event) {
 		event.preventDefault();
@@ -128,12 +121,7 @@ $('.reset').on('click', function () {
 
 $(document).ready(function(){
 	app.init();
-
-
 });
-
-
-
 
 
 ///////////////// scroll top 
@@ -150,42 +138,6 @@ $(document).ready(function(){
         return false; 
     }); 
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
