@@ -16,6 +16,7 @@
 		.then(function(result){
 			 app.ticker(result);
 			 app.displayNews(result); 
+
 			console.log("Object",result);
 			
 		})
@@ -49,11 +50,25 @@ app.displayNews= function(result){
 			  </div>
 			</div>
 		   </div>
-		</div>`
+		</div>`;
+		const popup =`<div class="popup" id="popup">
+		<div class="popup__content">
+			<div class="popup__left">
+				<img src=${piece.urlToImage} alt="Tour photo" class="popup__img">
+			</div>
+			<div class="popup__right">
+				<a href="#section-tours" class="popup__close">&times;</a>
+				<h3 class="heading-tertiary u-margin-bottom-small">${piece.title}</h3>
+				<p class="popup__text">${piece.content}</p>
+			</div>
+		</div>
+		</div>`;
 	  $('#results').append(htmlToPost).addClass("row");
-	 
+	  $('#pops').append(popup);
 	});
 };
+
+
 
 
 app.ticker = function(result){
