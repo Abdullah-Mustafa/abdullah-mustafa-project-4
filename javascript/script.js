@@ -15,9 +15,7 @@
 		})
 		.then(function(result){
 			 app.ticker(result);
-			 app.displayNews(result); 
-			console.log("Object",result);
-			
+			 app.displayNews(result); 			
 		})
 	}
 
@@ -51,10 +49,8 @@ app.displayNews= function(result){
 		   </div>
 		</div>`
 	  $('#results').append(htmlToPost).addClass("row");
-	 
 	});
 };
-
 
 app.ticker = function(result){
 	result.articles.forEach(function(item){
@@ -70,13 +66,14 @@ app.ticker = function(result){
 		$('.ticker-wrap').append(ticker);
 	})
 }
+
 $('.btn').on('click', function(event) {
 	event.preventDefault();
 
 	$('html, body').stop().animate({
 		scrollTop: $('.results-button').offset().top -400
 
-	}, 1000);
+	}, 1500);
 	return false;
 })
 
@@ -86,17 +83,16 @@ app.changeoptions = function(){
 		const userCategory = $('#category option:selected').val();
 		const userCountry = $('#country option:selected').val();
 		$('#results').empty();
-		app.getNews(userCategory, userCountry );
-		console.log("test")
-		
+		app.getNews(userCategory, userCountry );		
 	})
+
 	$('input').on('click', function (event) {
 		event.preventDefault();
 
 		$('html, body').stop().animate({
 			scrollTop: $('#results').offset().top
 
-		}, 1800);
+		}, 1500);
 		return false;
 	})
 }
@@ -110,16 +106,9 @@ $('.reset').on('click', function () {
 	app.getNews();
   }
 
-
 $(document).ready(function(){
 	app.init();
-
-
 });
-
-
-
-
 
 ///////////////// scroll top 
 $(document).ready(function(){ 
