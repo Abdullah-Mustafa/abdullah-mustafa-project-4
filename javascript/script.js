@@ -146,7 +146,7 @@ $(document).ready(function(){
 ////////////////////Typed JS 
 $(function(){
 	$(".typed").typed({
-        strings: [ "from around the world", "in Business", "in Entertainment", "in Health", "in Science", "in Sports","in Technology"],
+        strings: [ "in Business", "in Entertainment", "in Health", "in Science", "in Sports","in Technology", "in Business", "in Entertainment", "in Health", "in Science", "in Sports","in Technology"],
 		// Optionally use an HTML element to grab strings from (must wrap each string in a <p>)
 		stringsElement: null,
 		// typing speed
