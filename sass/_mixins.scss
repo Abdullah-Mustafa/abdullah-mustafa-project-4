@@ -18,7 +18,7 @@ ORDER: Base + typography > general layout + grid > page layout > components
 */
 @mixin respond($breakpoint) {
     @if $breakpoint == small-phone {
-        @media only screen and (max-width: 40em) { @content };    //1800
+        @media only screen and (max-width: 40em) { @content };    //640px
     }
     @if $breakpoint == phone {
         @media only screen and (max-width: 46em) { @content };    //750px
@@ -43,7 +43,6 @@ ORDER: Base + typography > general layout + grid > page layout > components
         clear: both;
     }
 }
-
 
 @mixin absCenter {
     position: absolute;

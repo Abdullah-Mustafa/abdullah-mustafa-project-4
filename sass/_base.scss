@@ -1,6 +1,12 @@
 @import "mixins";
 
-// COLORS
+/////CSS custom properties 
+:root {
+    --size: 80px;
+    --speed: 4s;
+  }
+
+/////// Variables 
 $color-brick-red: #962715;
 $color-red-light: #EC6A5C;
 $color-matte-black: #1e1e20;
@@ -34,7 +40,7 @@ html {
   }
   @include respond(small-phone) {
    font-size: 40%;
-}
+  }
 }
 body {
     font-family: 'Lato', sans-serif;
@@ -46,3 +52,6 @@ body {
     color: $color-white;
 }
 
+ 
+  
+ 

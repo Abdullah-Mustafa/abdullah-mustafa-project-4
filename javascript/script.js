@@ -3,7 +3,7 @@
  
 	app.getNews = function (options, countryChosen) {
 		$.ajax({
-			url: `https://newsapi.org/v2/top-headlines?country=${countryChosen}&category=${options}&pageSize=3&apiKey=ed35640c3ae547398e8b8b8f102fc2fa`,
+			url: `https://newsapi.org/v2/top-headlines?country=${countryChosen}&category=${options}&pageSize=3&apiKey=42ca1d3a90124a35a4b9169c2b910b10`,
 			 method: 'GET',
 			 dataType: 'json',
 			 data: {
@@ -16,12 +16,15 @@
 		.then(function(result){
 			 app.displayTicker(result);
 			 app.displayNews(result); 		
-		})
-	}
-
+		});
+		
+	};
 // Display data on the page
-app.displayNews= function(result){
+	app.displayNews= function(result){
+		let counter = 0;
     result.articles.forEach(function(piece){ 
+		counter++;
+		console.log('counter is ' + counter);
 		const htmlToPost = `
 		<div class="col-1-of-3">
 		   <div class="card">
@@ -42,12 +45,13 @@ app.displayNews= function(result){
 				   <h4 class="card__box--heading">Check Full story</h4>
 				   <h4 class="card__box--heading">below</h4>
 				</div>
-				<a href="#popup" class="read-more">Read more</a>
+				<a href="#popup${counter}" class="read-more">Read more</a>
 			  </div>
 			</div>
 		   </div>
 		</div>`;
 		const popup =`
+		<div id="popup${counter}" class="popup">
 		<div class="popup__content">
 			<div class="popup__left">
 				<img src=${piece.urlToImage} alt="Tour photo" class="popup__img">
@@ -58,11 +62,12 @@ app.displayNews= function(result){
 				<p class="popup__text">${piece.content}</p>
 			</div>
 		</div>
+		</div>
 		`;
 	  $('#results').append(htmlToPost).addClass("row");
-	  $('#pops').append(popup).addClass('popup').attr('id', 'popup');
+	  $('#pops').append(popup);
 	});
-};
+	};
 
 
 app.displayTicker = function(result){
@@ -74,11 +79,10 @@ app.displayTicker = function(result){
 		<div class="ticker__item">${item.description}</div>
 		<div class="ticker__item">${item.title}</div>
 		<div class="ticker__item">${item.source.name}</div>
-	
 		 </div>`;
 		$('.ticker-wrap').append(ticker);
-	})
-}
+	});
+};
 $('.btn').on('click', function(event) {
 	event.preventDefault();
 
@@ -87,7 +91,7 @@ $('.btn').on('click', function(event) {
 
 	}, 1000);
 	return false;
-})
+});
 
 
 app.changeoptions = function(){	
@@ -97,17 +101,16 @@ app.changeoptions = function(){
 		$('#results').empty();
 		$('.ticker-wrap').empty();
 		app.getNews(userCategory, userCountry );
-	})
+	});
 	$('input').on('click', function (event) {
 		event.preventDefault();
 
 		$('html, body').stop().animate({
 			scrollTop: $('#results').offset().top
-
 		}, 1800);
 		return false;
-	})
-}
+	});
+};
 
 $('.reset').on('click', function () {
 	location.reload();
@@ -116,7 +119,7 @@ $('.reset').on('click', function () {
   app.init = function() {
     app.changeoptions();
 	app.getNews();
-  }
+  };
 
 
 $(document).ready(function(){
@@ -140,12 +143,10 @@ $(document).ready(function(){
 });
 
 
-
 ////////////////////Typed JS 
-
 $(function(){
 	$(".typed").typed({
-        strings: ["from around the world", "in Business", "in Entertainment", "in Health", "in Science", "in Sports","in Technology" ],
+        strings: [ "in Business", "in Entertainment", "in Health", "in Science", "in Sports","in Technology" ,"in Health", "in Science", "in Sports","in Technology"],
 		// Optionally use an HTML element to grab strings from (must wrap each string in a <p>)
 		stringsElement: null,
 		// typing speed

@@ -17,7 +17,6 @@
         object-fit: cover;
     }
 }
-
 .header { 
     height: 100vh;
     @include respond(tab-port) { // width < 900?
@@ -35,7 +34,7 @@
            @include respond(tab-land) { // width < 1200?
             font-size: 3.5rem; //1 rem = 9px, 9/16 = 50%
         }
-        @include respond(small-phone) { // width < 900?
+        @include respond(small-phone) { 
             font-size: 3rem;
         }
        }
@@ -69,12 +68,9 @@
         font-size: 3rem;
         letter-spacing: 2px;
         font-weight: 700;
-
-        //Change for the <button> element
         border: none;
         cursor: pointer;
-    }
-    
+    } 
     &:hover {
         transform: translateY(-3px);
         box-shadow: 0 1rem 2rem rgba($color-matte-black,.2);
@@ -101,7 +97,6 @@
         }
     }
    
-    
     &::after {
         content: "";
         display: inline-block;
@@ -124,7 +119,6 @@
 
 
 ///////////////////////////// TICKER STYLE 
-
 .ticker-wrap {
     position: fixed;
     bottom: 0;
@@ -182,32 +176,9 @@
         transform: translate(0);
     }
 }
-
-  @keyframes pulse {
-    0% {
-      -moz-box-shadow: 0 0 0 0 $color-brick-red;
-      box-shadow: 0 0 0 0 $color-brick-red;
-    }
-    70% {
-        -moz-box-shadow: 0 0 0 4px $color-brick-red;
-        box-shadow: 0 0 0 4px $color-brick-red;
-    }
+@keyframes rotate {
     100% {
-        -moz-box-shadow: 0 0 0 0 $color-brick-red;
-        box-shadow: 0 0 0 0 $color-brick-red;
-    }
-  }
-
-  @-webkit-keyframes ticker {
-    0% {
-      -webkit-transform: translate3d(0, 0, 0);
-      transform: translate3d(0, 0, 0);
-      visibility: visible;
-    }
-  
-    100% {
-      -webkit-transform: translate3d(-100%, 0, 0);
-      transform: translate3d(-100%, 0, 0);
+      transform: rotate(360deg);
     }
   }
   
@@ -224,6 +195,24 @@
     }
   }
 
+  //////////////////// Animation style by Alexey Peterson
+  .loader {
+    width: var(--size);
+    height: var(--size);
+  }
+  
+  .loader__inner {
+    display: block;
+    width: var(--size);
+    height: var(--size);
+    border-radius: 50%;
+    box-shadow: 
+      inset calc(var(--size) / 6) calc((var(--size) / 6) * -1) 0 0 $color-brick-red,
+      inset calc((var(--size) / 6) * -1) calc(var(--size) / 6) 0 0 $color-matte-black,
+      inset calc(var(--size) / 6) calc(var(--size) / 6) 0 0  $color-medium-grey,
+      inset calc((var(--size) / 6) * -1) calc((var(--size) / 6) * -1) 0 0  $color-medium-grey;
+     animation: rotate var(--speed) linear infinite;
+  }
 
   ////////////////////////////////// SECTIONS STYLE
 
@@ -341,7 +330,7 @@ select::-ms-expand {
     display: flex;
     justify-content: space-around;
     @include respond(phone) { 
-        flex-direction: column;
+         flex-direction: column;
           justify-content: center;
           align-items: center;
           margin: -9rem 0;
@@ -354,24 +343,15 @@ select::-ms-expand {
        }
 }
 .section-options {
-   margin: 10rem 0;
-   padding: 5rem 0;
-   @include respond(phone) { 
-    margin: 4rem 0;
-    }
+    margin: 10rem 0;
+    padding: 5rem 0;
+    @include respond(phone) { 
+        margin: 4rem 0;
+        }
   
 }
-.icon {
-    font-size: 2rem;
-    color: $color-brick-red;
-    animation: pulse 2s infinite;
-    padding: 1rem 3rem 0; 
-    background-color:  #f4f5f9;
-    @include respond(phone) { 
-       display: none;
-       }
-    
-}
+
+
 
 ////////////////////////// SCROLL TOP BUTTON
 #scroll {
@@ -389,10 +369,10 @@ select::-ms-expand {
     -moz-border-radius:60px;
     border-radius:60px;
     z-index: 1000;
-    @include respond(tab-port) { // width < 900?
+    @include respond(tab-port) {
         bottom: 13%;
     }
-    @include respond(phone) { // width < 900?
+    @include respond(phone) { 
         bottom: 9%;
     } 
 }
