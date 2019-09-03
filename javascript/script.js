@@ -3,7 +3,7 @@
  
 	app.getNews = function (options, countryChosen) {
 		$.ajax({
-			url: `https://newsapi.org/v2/top-headlines?country=${countryChosen}&category=${options}&pageSize=3&apiKey=36036aa88c3a4c4c81c706cc7d0135e7`,
+			url: `https://newsapi.org/v2/top-headlines?country=${countryChosen}&category=${options}&pageSize=3&apiKey=ed35640c3ae547398e8b8b8f102fc2fa`,
 			 method: 'GET',
 			 dataType: 'json',
 			 data: {
@@ -145,7 +145,7 @@ $(document).ready(function(){
 
 $(function(){
 	$(".typed").typed({
-        strings: ["the world","Politics", "Business", "Art", "Technology", "Sports","Economy", "Science", "entertainment","the world" ],
+        strings: ["from around the world", "in Business", "in Entertainment", "in Health", "in Science", "in Sports","in Technology" ],
 		// Optionally use an HTML element to grab strings from (must wrap each string in a <p>)
 		stringsElement: null,
 		// typing speed
